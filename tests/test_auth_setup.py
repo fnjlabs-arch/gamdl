@@ -42,7 +42,7 @@ class _ScriptedWizard:
 
     async def choose(self, title, choices, *, description=""):
         self.screens.append((title, description))
-        if title in {"Welcome to Gamdl!", "Configure authentication"}:
+        if title in {"Welcome to SadSha Music Grab!", "Configure authentication"}:
             return self.method
         if title == "Authentication failed":
             if self.failure_action is None:
@@ -267,7 +267,7 @@ class FirstRunAuthTests(unittest.IsolatedAsyncioTestCase):
                     self.selections = 0
 
                 async def choose(self, title, choices, *, description=""):
-                    if title == "Welcome to Gamdl!":
+                    if title == "Welcome to SadSha Music Grab!":
                         self.selections += 1
                         return 0 if self.selections == 1 else 2
                     return await super().choose(title, choices, description=description)

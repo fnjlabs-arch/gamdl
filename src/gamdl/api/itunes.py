@@ -143,14 +143,14 @@ class ItunesApi:
     ) -> dict[str, Any]:
         """Search Apple's unauthenticated iTunes catalog.
 
-        Supports ``song``, ``musicVideo`` and ``album`` for Gamdl's search browser.
+        Supports ``song``, ``musicVideo`` and ``album`` for SadSha Music Grab's search browser.
         Apple documents up to 200 results per query but no cursor/offset API.
         These are discovery records, not Apple Music media metadata.
         """
         if not term.strip():
             raise ValueError("iTunes search term must not be empty")
         if entity not in {"song", "musicVideo", "album"}:
-            raise ValueError("Unsupported Gamdl iTunes search entity")
+            raise ValueError("Unsupported SadSha Music Grab iTunes search entity")
         if not 1 <= limit <= 200:
             raise ValueError("iTunes search limit must be between 1 and 200")
         response = await self.http.request_json(

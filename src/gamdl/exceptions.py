@@ -1,5 +1,5 @@
-"""Base errors exposed by the Gamdl package."""
+"""Base errors exposed by the SadSha Music Grab package."""
 
 
 class GamdlError(Exception):
-    """Base class for expected, application-specific Gamdl failures."""
+    """Base class for expected, application-specific SadSha Music Grab failures."""

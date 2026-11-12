@@ -1,4 +1,4 @@
-"""Shared Gamdl full-screen terminal color palette."""
+"""Shared SadSha Music Grab full-screen terminal color palette."""
 
 from prompt_toolkit.styles import Style
 

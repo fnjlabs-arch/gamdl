@@ -1,4 +1,4 @@
-"""Gamdl: an asynchronous Apple Music toolkit."""
+"""SadSha Music Grab: an asynchronous Apple Music toolkit."""
 
 from importlib.metadata import PackageNotFoundError, version
 import logging

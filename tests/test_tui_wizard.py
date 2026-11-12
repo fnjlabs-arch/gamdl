@@ -93,7 +93,7 @@ class WizardTuiTests(unittest.IsolatedAsyncioTestCase):
 
             async def flow(ui):
                 method = await ui.choose(
-                    "Welcome to Gamdl!",
+                    "Welcome to SadSha Music Grab!",
                     [MenuChoice("Wrapper", 0), MenuChoice("Media User Token", 1)],
                 )
                 address = await ui.ask(
@@ -108,7 +108,7 @@ class WizardTuiTests(unittest.IsolatedAsyncioTestCase):
 
             task = asyncio.create_task(wizard.run(flow))
             await asyncio.wait_for(output.started.wait(), 2)
-            self.assertEqual(wizard.title, "Welcome to Gamdl!")
+            self.assertEqual(wizard.title, "Welcome to SadSha Music Grab!")
             pipe.send_text("\x1b[B\r")
             await asyncio.sleep(0.06)
             self.assertEqual(wizard.title, "Wrapper authentication")

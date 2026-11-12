@@ -2,14 +2,14 @@
   <img src="https://upload.wikimedia.org/wikipedia/commons/0/0f/Apple_Music_Logo_%282026%29.svg" alt="Apple Music logo" width="220">
 </p>
 
-<h1 align="center">Gamdl<br><sub><sub>Glomatico's Apple Music Downloader</sub></sub></h1>
+<h1 align="center">SadSha Music Grab<br><sub><sub>Apple Music Downloader — based on Gamdl by Glomatico</sub></sub></h1>
 
 [![PyPI version](https://img.shields.io/pypi/v/gamdl?color=blue)](https://pypi.org/project/gamdl/)
 [![Python versions](https://img.shields.io/pypi/pyversions/gamdl)](https://pypi.org/project/gamdl/)
-[![License](https://img.shields.io/github/license/glomatico/gamdl)](LICENSE)
+[![License](https://img.shields.io/github/license/fnjlabs-arch/gamdl)](LICENSE)
 [![Downloads](https://img.shields.io/pypi/dm/gamdl)](https://pypi.org/project/gamdl/)
 
-**Gamdl** is a command-line app for downloading Apple Music songs, albums, playlists, music videos, and uploaded videos. It combines an interactive terminal interface with configurable codecs, metadata tagging, and library organization.
+**SadSha Music Grab** is a command-line app for downloading Apple Music songs, albums, playlists, music videos, and uploaded videos. It combines an interactive terminal interface with configurable codecs, metadata tagging, and library organization.
 
 **Join our Discord server:** <https://discord.gg/aBjMEZ9tnq>
 
@@ -43,7 +43,7 @@
 
 ## 📋 Prerequisites
 
-- **Python 3.10 or newer.** A Rust toolchain is also needed if your platform must build Gamdl's native extension from source.
+- **Python 3.10 or newer.** A Rust toolchain is also needed if your platform must build SadSha Music Grab's native extension from source.
 - **An Apple Music account.** An active subscription is generally required to access subscription playback streams.
 - **An authentication method:** Wrapper, browser cookies, or a Media User Token.
 - **A compatible DRM backend** for protected streams. Install the appropriate optional dependency as described below.
@@ -54,10 +54,10 @@ Codec and resolution availability varies by track, account, authentication metho
 
 ## 📦 Installation
 
-**Recommended:** Install Gamdl with the Widevine extra from [PyPI](https://pypi.org/project/gamdl/). It includes a built-in **Widevine L3 device**, so you don't need to provide a separate device file for standard downloads:
+**Recommended:** Install SadSha Music Grab with the Widevine extra from [PyPI](https://pypi.org/project/gamdl/). It includes a built-in **Widevine L3 device**, so you don't need to provide a separate device file for standard downloads:
 
 ```bash
-python -m pip install "gamdl[widevine]"
+python -m pip install "gamdl[widevine]"  # PyPI package name is still `gamdl` for now
 ```
 
 If you prefer PlayReady, install its extra instead:
@@ -80,18 +80,18 @@ If a prebuilt wheel is not available for your platform, installing from source r
 
 ## 🚀 First Run
 
-After installing Gamdl, you can start a download right away:
+After installing SadSha Music Grab, you can start a download right away:
 
 ```bash
 gamdl rip "https://music.apple.com/us/album/never-gonna-give-you-up-2022-remaster/1624945511?i=1624945512"
 ```
 
-If this is your first run, Gamdl will guide you through any settings you haven't configured yet:
+If this is your first run, SadSha Music Grab will guide you through any settings you haven't configured yet:
 
 1. **Authentication:** Choose **Wrapper**, **Cookies**, or **Media User Token**. Follow the on-screen instructions to connect your Apple Music account. See [Authentication](#authentication) for details about each method.
-2. **Output directory:** Choose where your downloads will be saved. Gamdl suggests your operating system's **Music** folder; press **Enter** to accept it or enter a different path.
+2. **Output directory:** Choose where your downloads will be saved. SadSha Music Grab suggests your operating system's **Music** folder; press **Enter** to accept it or enter a different path.
 
-Once setup is complete, Gamdl begins downloading and displays progress in the terminal. It saves your choices in `~/.gamdl/config.yml`, so these prompts won't appear again unless you clear the corresponding settings.
+Once setup is complete, SadSha Music Grab begins downloading and displays progress in the terminal. It saves your choices in `~/.gamdl/config.yml`, so these prompts won't appear again unless you clear the corresponding settings.
 
 You can change authentication later with `gamdl auth`, or override the download folder for one command with `--output-dir PATH`. For scripts and other non-interactive environments, configure authentication and the output directory beforehand; the setup wizards require an interactive terminal.
 
@@ -99,7 +99,7 @@ You can change authentication later with `gamdl auth`, or override the download 
 
 ## 🚀 Usage
 
-Gamdl uses subcommands. Run `gamdl --help` for the command list or `gamdl <command> --help` to see its options.
+SadSha Music Grab uses subcommands. Run `gamdl --help` for the command list or `gamdl <command> --help` to see its options.
 
 ### Download URLs (`rip`)
 
@@ -115,7 +115,7 @@ Multiple URLs can be downloaded in one invocation:
 gamdl rip "<first Apple Music URL>" "<second Apple Music URL>"
 ```
 
-Catalog and library sharing links, including Apple Music Classical links, are supported where their corresponding media can be resolved. For artist links, Gamdl opens the artist browser or you can specify categories automatically:
+Catalog and library sharing links, including Apple Music Classical links, are supported where their corresponding media can be resolved. For artist links, SadSha Music Grab opens the artist browser or you can specify categories automatically:
 
 ```bash
 gamdl rip "<artist URL>" --artist-auto-select main-albums,music-videos
@@ -131,9 +131,9 @@ Download a song or music video using its 12-character International Standard Rec
 gamdl rip isrc:USUM71703085
 ```
 
-`isrc:` queries both the song and music-video catalogs using Apple's `filter[isrc]` API. An ISRC can identify multiple catalog entries; if the lookup returns more than one match, Gamdl opens its existing selection interface so you can choose which to download. A single match is downloaded directly. Multiple matches require an interactive terminal.
+`isrc:` queries both the song and music-video catalogs using Apple's `filter[isrc]` API. An ISRC can identify multiple catalog entries; if the lookup returns more than one match, SadSha Music Grab opens its existing selection interface so you can choose which to download. A single match is downloaded directly. Multiple matches require an interactive terminal.
 
-The lookup uses the current authenticated storefront. Apple's response may reference alternate releases in `meta.filters.isrc`; for now Gamdl resolves only the returned `data` matches, not every alternate release ID. Empty results mean no matching resource was returned in that storefront.
+The lookup uses the current authenticated storefront. Apple's response may reference alternate releases in `meta.filters.isrc`; for now SadSha Music Grab resolves only the returned `data` matches, not every alternate release ID. Empty results mean no matching resource was returned in that storefront.
 
 ### Browse Your Library (`library`)
 
@@ -174,7 +174,7 @@ search:
 
 Override it for a single command with `--search-api`. iTunes search supports songs,
 music videos and albums, but not uploaded videos or playlists. Its public Search API
-returns up to 200 results per category; Gamdl displays those in local pages
+returns up to 200 results per category; SadSha Music Grab displays those in local pages
 without relying on undocumented iTunes pagination. Selected items are then
 resolved using authoritative Apple Music catalog metadata before download.
 Apple documents an approximate iTunes Search API limit of 20 requests/minute;
@@ -220,7 +220,7 @@ The wizard validates your selected method and saves it to the YAML configuration
 
 #### Wrapper
 
-Connect to a running [Wrapper v2](https://github.com/glomatico/wrapper-v2) service. Gamdl can use its authenticated session and compatible playback/decryption features. The default wrapper URL is `http://127.0.0.1`.
+Connect to a running [Wrapper v2](https://github.com/glomatico/wrapper-v2) service. SadSha Music Grab can use its authenticated session and compatible playback/decryption features. The default wrapper URL is `http://127.0.0.1`.
 
 #### Cookies
 
@@ -270,7 +270,7 @@ gamdl sync playlists --no-download
 gamdl sync playlists --playlist 'Playlists/Apple Music/Oliver Tree_ essenciais.m3u8'
 ```
 
-Gamdl matches tracks by catalog ID using the local SQLite index and embedded media tags. The default output shows a concise table of only playlists that need attention; use `--verbose` to show all playlists and individual added/removed tracks. After fetching complete playlist listings, synchronization reports the number of **unique missing tracks**, then downloads them with the same per-track progress bars as `rip` and an overall completed/total bar. It respects `download.concurrent_downloads` (parallel tracks) and `download.segment_concurrency` (media segment requests per track), reusing shared tracks across playlists. Missing tracks are downloaded with your configured codec settings unless `--no-download` is used. Removed playlist entries **never delete local media**. Duplicate occurrences and ordered entries are preserved. Failed downloads or incomplete Apple Music responses leave each affected playlist unchanged; other playlists may still succeed. The command does not rename playlist files or alter existing metadata headers. Large removals require `--yes` after inspecting `--dry-run`.
+SadSha Music Grab matches tracks by catalog ID using the local SQLite index and embedded media tags. The default output shows a concise table of only playlists that need attention; use `--verbose` to show all playlists and individual added/removed tracks. After fetching complete playlist listings, synchronization reports the number of **unique missing tracks**, then downloads them with the same per-track progress bars as `rip` and an overall completed/total bar. It respects `download.concurrent_downloads` (parallel tracks) and `download.segment_concurrency` (media segment requests per track), reusing shared tracks across playlists. Missing tracks are downloaded with your configured codec settings unless `--no-download` is used. Removed playlist entries **never delete local media**. Duplicate occurrences and ordered entries are preserved. Failed downloads or incomplete Apple Music responses leave each affected playlist unchanged; other playlists may still succeed. The command does not rename playlist files or alter existing metadata headers. Large removals require `--yes` after inspecting `--dry-run`.
 
 ### Interactive Controls
 
@@ -285,7 +285,7 @@ Gamdl matches tracks by catalog ID using the local SQLite index and embedded med
 
 ## ⚙️ Configuration
 
-Gamdl stores its configuration in a `.gamdl` folder inside your **home directory** (your user profile folder on Windows). For example:
+SadSha Music Grab stores its configuration in a `.gamdl` folder inside your **home directory** (your user profile folder on Windows). For example:
 
 ```text
 Windows: C:\Users\<username>\.gamdl\config.yml
@@ -293,7 +293,7 @@ Linux:   /home/<username>/.gamdl/config.yml
 macOS:   /Users/<username>/.gamdl/config.yml
 ```
 
-Gamdl creates a configuration file automatically on first use when needed. To find its location, create one manually, or inspect the effective settings, use:
+SadSha Music Grab creates a configuration file automatically on first use when needed. To find its location, create one manually, or inspect the effective settings, use:
 
 ```bash
 gamdl config path
@@ -330,7 +330,7 @@ Set the Apple Music storefront with a two-letter country code such as `br`, and 
 
 #### Codec Priority (`download.song_codec_priority` / `--song-codec-priority`)
 
-Select codecs in preference order. Gamdl tries the preferred formats based on the streams actually available for each track. **Default:** `aac` (AAC via HLS, compatible with Wrapper or Widevine/PlayReady).
+Select codecs in preference order. SadSha Music Grab tries the preferred formats based on the streams actually available for each track. **Default:** `aac` (AAC via HLS, compatible with Wrapper or Widevine/PlayReady).
 
 ```yaml
 download:
@@ -352,7 +352,7 @@ Supported song codec identifiers are `aac`, `aac-he`, `aac-binaural`, `aac-downm
 
 #### Song Codec Specifications
 
-These are **typical Apple Music profiles**, not guaranteed specifications. Actual bitrates, sample rates, and available streams depend on the track and its HLS manifest; Gamdl discovers the available variants instead of enforcing these values.
+These are **typical Apple Music profiles**, not guaranteed specifications. Actual bitrates, sample rates, and available streams depend on the track and its HLS manifest; SadSha Music Grab discovers the available variants instead of enforcing these values.
 
 | Codec | Typical bitrate | Audio characteristics |
 | --- | --- | --- |
@@ -372,7 +372,7 @@ These are **typical Apple Music profiles**, not guaranteed specifications. Actua
 
 ALAC is lossless, so its bitrate varies with the audio. The `alac` option selects a concrete tier, not a new encoded format. `--ask-song-codec` opens an interactive stream selector; `ask` is **not** a codec identifier.
 
-Gamdl warns after authentication when Apple Music reports account content restrictions, which may prevent some tracks from downloading. It also warns when ALAC is selected without Wrapper, because Apple Music may refuse Widevine/PlayReady licenses for lossless streams. These are informational warnings, not download blockers; interactive ALAC selection displays the warning when that codec is chosen.
+SadSha Music Grab warns after authentication when Apple Music reports account content restrictions, which may prevent some tracks from downloading. It also warns when ALAC is selected without Wrapper, because Apple Music may refuse Widevine/PlayReady licenses for lossless streams. These are informational warnings, not download blockers; interactive ALAC selection displays the warning when that codec is chosen.
 
 #### Exact Codec (`download.song_codec` / `--song-codec`)
 
@@ -400,9 +400,9 @@ Use `--lyrics-file-format` and `--embedded-lyrics-format` to override these sett
 | `ttml` | `.ttml` | Original Apple Music TTML |
 | `text` | `.txt` | Plain lyrics without timing |
 
-**External files are strict:** if the selected format cannot be produced, Gamdl reports the lyrics sidecar as unavailable rather than silently saving a different type. The only exception is `enhanced-lrc` degrading to line LRC when syllable timing is missing. Existing media is reused when only a sidecar needs to be created or refreshed; an existing sidecar with a different extension is not mistaken for the requested format.
+**External files are strict:** if the selected format cannot be produced, SadSha Music Grab reports the lyrics sidecar as unavailable rather than silently saving a different type. The only exception is `enhanced-lrc` degrading to line LRC when syllable timing is missing. Existing media is reused when only a sidecar needs to be created or refreshed; an existing sidecar with a different extension is not mistaken for the requested format.
 
-**Embedded lyrics** use the standard `©lyr` text metadata atom, even when formatted as LRC, SRT or TTML. If the requested embedded representation is unavailable, Gamdl falls back to line LRC when synchronized, then plain text. Some players display embedded timestamps or XML as literal text instead of synchronized lyrics, so `text` remains the default.
+**Embedded lyrics** use the standard `©lyr` text metadata atom, even when formatted as LRC, SRT or TTML. If the requested embedded representation is unavailable, SadSha Music Grab falls back to line LRC when synchronized, then plain text. Some players display embedded timestamps or XML as literal text instead of synchronized lyrics, so `text` remains the default.
 
 Sidecars are enabled by default (`no_lyrics_file: false`). Set `output.no_lyrics_file: true` or use `--no-lyrics-file` to disable external lyrics; to omit embedded lyrics, add `lyrics` to `output.exclude_tags` or use `--exclude-tags lyrics`. `--no-tag` also disables embedded lyrics. These controls are independent of the format settings.
 
@@ -429,7 +429,7 @@ gamdl rip "<music video URL>" --music-video-codec-priority h265,h264
 
 Select an exact video codec, or keep `null` to use the priority list. The maximum requested height defaults to `1080` pixels; higher resolutions depend on stream availability and your DRM capabilities. Use `--ask-music-video-streams` (CLI-only) to select audio and video streams interactively.
 
-**Videos above 1080p require a Widevine L1 or PlayReady SL3000 (SL3K) device.** The bundled Widevine device is L3 and does not meet that requirement. Provide an appropriately provisioned device with `--device-path` (or `auth.device_path`) if you increase `--max-height` beyond 1080. Gamdl warns when it detects an insufficient device security level; the warning does not prevent downloading, and a higher security level alone does not guarantee a compatible license or stream.
+**Videos above 1080p require a Widevine L1 or PlayReady SL3000 (SL3K) device.** The bundled Widevine device is L3 and does not meet that requirement. Provide an appropriately provisioned device with `--device-path` (or `auth.device_path`) if you increase `--max-height` beyond 1080. SadSha Music Grab warns when it detects an insufficient device security level; the warning does not prevent downloading, and a higher security level alone does not guarantee a compatible license or stream.
 
 Historically, Apple Music has offered the following music-video resolutions:
 
@@ -438,13 +438,13 @@ Historically, Apple Music has offered the following music-video resolutions:
 | `h264` (AVC) | 240p, 360p, 480p, 540p, 720p, 1080p |
 | `h265` (HEVC) | Up to 2160p, including 1440p and 2160p variants |
 
-These are examples, **not a fixed list enforced by Gamdl**. Gamdl selects from the resolutions and bitrates advertised in the video's HLS manifest, respecting `--max-height`. The default 1080p limit excludes higher resolutions until you raise it.
+These are examples, **not a fixed list enforced by SadSha Music Grab**. SadSha Music Grab selects from the resolutions and bitrates advertised in the video's HLS manifest, respecting `--max-height`. The default 1080p limit excludes higher resolutions until you raise it.
 
 #### Music Video Audio Selection
 
-For music videos, Gamdl automatically selects the **highest-bitrate AAC** track available. If no AAC rendition is available, it falls back to the **highest-bitrate HE-AAC** track. It never automatically selects Dolby Atmos or AC-3, even if those are marked as the default audio tracks in the HLS manifest.
+For music videos, SadSha Music Grab automatically selects the **highest-bitrate AAC** track available. If no AAC rendition is available, it falls back to the **highest-bitrate HE-AAC** track. It never automatically selects Dolby Atmos or AC-3, even if those are marked as the default audio tracks in the HLS manifest.
 
-Audio may come from a different audio group than the chosen video variant. When needed, Gamdl reads audio playlist metadata to estimate bitrate without downloading media segments. If an audio bitrate cannot be determined, the playlist's default designation and stereo group are used as tiebreakers. If neither AAC nor HE-AAC is available, automatic selection reports an unavailable stream rather than choosing a surround codec. To select an audio stream manually (including Atmos or AC-3), use `--ask-music-video-streams`.
+Audio may come from a different audio group than the chosen video variant. When needed, SadSha Music Grab reads audio playlist metadata to estimate bitrate without downloading media segments. If an audio bitrate cannot be determined, the playlist's default designation and stereo group are used as tiebreakers. If neither AAC nor HE-AAC is available, automatic selection reports an unavailable stream rather than choosing a surround codec. To select an audio stream manually (including Atmos or AC-3), use `--ask-music-video-streams`.
 
 #### Music Video Container (`output.music_video_container` / `--music-video-container`)
 
@@ -474,7 +474,7 @@ The available identifiers, in the default preference order, are:
 | `sd480pVideo` | 480p SD |
 | `provisionalUploadVideo` | Provisional upload |
 
-These are Apple Music asset names, not guaranteed resolutions or bitrates. Gamdl uses the best available variant in this order unless you select a specific one.
+These are Apple Music asset names, not guaranteed resolutions or bitrates. SadSha Music Grab uses the best available variant in this order unless you select a specific one.
 
 ### Download Behavior
 
@@ -490,7 +490,7 @@ Existing files are skipped by default (`download.overwrite: false`). Use the `--
 
 The default is to continue processing remaining items after individual failures (`fail_fast: false`). Set `download.fail_fast: true` or use `--fail-fast` to stop after an error.
 
-For `rip`, `library`, `search`, and `sync playlists`, expected Gamdl errors are reported as short messages without tracebacks. Unexpected exceptions (including DRM license failures and malformed API responses) are collected and printed with **full Python tracebacks after** the final results, once progress bars have closed. Use `--no-tracebacks` (or `ui.no_tracebacks: true` in YAML) to suppress tracebacks while keeping concise failure messages. Tracebacks may contain signed URLs, tokens, or account details; inspect them before sharing logs.
+For `rip`, `library`, `search`, and `sync playlists`, expected SadSha Music Grab errors are reported as short messages without tracebacks. Unexpected exceptions (including DRM license failures and malformed API responses) are collected and printed with **full Python tracebacks after** the final results, once progress bars have closed. Use `--no-tracebacks` (or `ui.no_tracebacks: true` in YAML) to suppress tracebacks while keeping concise failure messages. Tracebacks may contain signed URLs, tokens, or account details; inspect them before sharing logs.
 
 #### Automatic Selection (`download.artist_auto_select` / `--artist-auto-select`, `download.library_auto_select` / `--library-auto-select`)
 
@@ -529,7 +529,7 @@ Embedded artwork is normally included when tagging is enabled. Saving a separate
 
 #### Output Directory (`output.directory` / `--output-dir`)
 
-The first time you download media, `output.directory` is `null`, so Gamdl asks where to save your music and remembers your choice in `config.yml`. The suggested folder is the **Music directory of your operating system's user profile**, detected through `platformdirs` (including relocated Music folders on Windows and XDG music directories on Linux). Press Enter to accept it, or enter another location.
+The first time you download media, `output.directory` is `null`, so SadSha Music Grab asks where to save your music and remembers your choice in `config.yml`. The suggested folder is the **Music directory of your operating system's user profile**, detected through `platformdirs` (including relocated Music folders on Windows and XDG music directories on Linux). Press Enter to accept it, or enter another location.
 
 Use `--output-dir PATH` to bypass the prompt and override the destination for a command, or set `output.directory` directly in YAML. Non-interactive downloads require one of these explicit paths. `output.temp_path` / `--temp-path` optionally selects a working directory for temporary download files.
 
@@ -585,7 +585,7 @@ Unexpected errors print full tracebacks at the end by default. Set `ui.no_traceb
 
 ## 🏷️ Tags and Path Templates
 
-Gamdl separates **path placeholders** (used in filenames and folders) from **tag exclusions** (used to omit embedded metadata). Some names differ between the two. This reference lists every supported name.
+SadSha Music Grab separates **path placeholders** (used in filenames and folders) from **tag exclusions** (used to omit embedded metadata). Some names differ between the two. This reference lists every supported name.
 
 ### Path Template Placeholders
 
@@ -617,7 +617,7 @@ For example, `{track:02d} {title}` produces `01 Song Title` when a track number 
 
 The `{date}` placeholder uses the original release-date text. To select part of a date, use **strftime** specifiers such as `{date:%Y}` (year), `{date:%Y-%m}` (year and month), or `{date:%d}` (day). ISO-formatted dates and timestamps are supported; year-only and year-month values are also accepted, with missing month/day components assumed to be January/1 when formatting. Missing or invalid dates use the `Unknown Date` fallback.
 
-Playlist placeholders are populated when playlist context is available; otherwise, fallback text is used. Missing metadata also uses readable fallbacks such as `Unknown Artist` or `Unknown Album`, or an empty string for missing numbers. Gamdl sanitizes invalid filename characters and restricts path components to safe lengths. Excluding an embedded tag does **not** remove its value from filename formatting.
+Playlist placeholders are populated when playlist context is available; otherwise, fallback text is used. Missing metadata also uses readable fallbacks such as `Unknown Artist` or `Unknown Album`, or an empty string for missing numbers. SadSha Music Grab sanitizes invalid filename characters and restricts path components to safe lengths. Excluding an embedded tag does **not** remove its value from filename formatting.
 
 ### Excludable Metadata Tags
 
@@ -666,7 +666,7 @@ Use `--no-tag` to disable embedded tagging altogether. Only metadata provided fo
 
 ## 🔄 Migrating from Gamdl 3.x
 
-Gamdl 4.x introduces several changes to its CLI and configuration:
+SadSha Music Grab 4.x introduces several changes to its CLI and configuration:
 
 - **Subcommands:** Use `gamdl rip URL` instead of passing URLs directly to `gamdl`.
 - **YAML configuration:** Replace your old INI configuration with the new YAML settings. Run `gamdl config init` to generate a reference configuration.
@@ -676,7 +676,7 @@ Gamdl 4.x introduces several changes to its CLI and configuration:
 - **Excluded tags:** The old `all` special value is no longer accepted in `--exclude-tags`; use `--no-tag` instead. Some path placeholders use different names from tag exclusions (for example, `{date}` versus `release_date`).
 - **Download concurrency:** Use `download.segment_concurrency` / `--segment-concurrency` for media segment requests. Previous concurrency option names are not supported.
 - **Playlist organization:** `organize` can repair playlist paths, but restoring missing metadata headers in legacy playlists remains a separate, manual task.
-- **Database format:** Older SQLite indexes cannot be opened by 4.x. Gamdl does not overwrite or upgrade them automatically; move the old database aside or set a fresh `database.path`. Your downloaded media files are not touched.
+- **Database format:** Older SQLite indexes cannot be opened by 4.x. SadSha Music Grab does not overwrite or upgrade them automatically; move the old database aside or set a fresh `database.path`. Your downloaded media files are not touched.
 - **Native processing:** The native muxing/decryption layer replaces the old external downloader and muxer workflow. Review removed 3.x flags rather than copying them directly.
 - **Python API:** The modules and classes have been reorganized. Applications embedding Gamdl 3.x should update their imports and integration code.
 
@@ -686,7 +686,7 @@ Keep a backup of your old configuration until you have verified your new setting
 
 ## 🐍 Python API
 
-Gamdl also provides asynchronous Python APIs for catalog access, media resolution, downloading, and media processing. For example, to fetch a song's metadata using an exported Apple Music cookies file:
+SadSha Music Grab also provides asynchronous Python APIs for catalog access, media resolution, downloading, and media processing. For example, to fetch a song's metadata using an exported Apple Music cookies file:
 
 ```python
 import asyncio
@@ -727,13 +727,13 @@ The API is asynchronous; use context managers to close connections. More advance
 
 **The library has unexpected paths:** Check your filename templates and use `gamdl organize --dry-run` before applying changes.
 
-For additional support, use [GitHub Issues](https://github.com/glomatico/gamdl/issues) or the [Discord server](https://discord.gg/aBjMEZ9tnq). When sharing error tracebacks, remove cookies, tokens, and signed URLs.
+For additional support, use [GitHub Issues](https://github.com/fnjlabs-arch/gamdl/issues) or the [Discord server](https://discord.gg/aBjMEZ9tnq). When sharing error tracebacks, remove cookies, tokens, and signed URLs.
 
 <a name="contributing"></a>
 
 ## 🤝 Contributing
 
-Bug reports, feature requests, and pull requests are welcome. Please check existing [issues](https://github.com/glomatico/gamdl/issues) before opening a new one.
+Bug reports, feature requests, and pull requests are welcome. Please check existing [issues](https://github.com/fnjlabs-arch/gamdl/issues) before opening a new one.
 
 For source development, install [uv](https://docs.astral.sh/uv/), Python, and Rust. Then run:
 
@@ -751,10 +751,10 @@ The [publishing workflow](.github/workflows/python-publish.yml) builds a source 
 
 Run **Publish Python Package** manually from GitHub Actions to build and inspect artifacts **without publishing**. Publishing occurs only when a GitHub Release is published with a tag matching `pyproject.toml` (for example, `v4.0.0`). The workflow must be present on the repository's default branch for the release trigger to work.
 
-PyPI [Trusted Publishing](https://docs.pypi.org/trusted-publishers/) must be configured for repository `glomatico/gamdl`, workflow `python-publish.yml`, and GitHub environment `pypi`. No long-lived PyPI token is needed. Configure GitHub environment protection rules as desired before publishing a release.
+PyPI [Trusted Publishing](https://docs.pypi.org/trusted-publishers/) must be configured for repository `fnjlabs-arch/gamdl`, workflow `python-publish.yml`, and GitHub environment `pypi`. No long-lived PyPI token is needed. Configure GitHub environment protection rules as desired before publishing a release.
 
 <a name="license"></a>
 
 ## 📄 License
 
-Gamdl is released under the [MIT License](LICENSE).
+SadSha Music Grab is released under the [MIT License](LICENSE).

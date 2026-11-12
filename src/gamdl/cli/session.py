@@ -57,7 +57,7 @@ async def _authentication_wizard(options, stack: AsyncExitStack, *, force_setup:
     async def flow(ui: FullScreenWizard):
         while True:
             choice = await ui.choose(
-                "Configure authentication" if force_setup else "Welcome to Gamdl!",
+                "Configure authentication" if force_setup else "Welcome to SadSha Music Grab!",
                 [
                     MenuChoice("Wrapper", 0, "Connect to a wrapper service"),
                     MenuChoice("Cookies", 1, "Use an exported cookies file"),

@@ -155,7 +155,7 @@ class DatabaseCatalogTests(TestCase):
             )
         original = self.path.read_bytes()
         db = self.db()
-        with self.assertRaisesRegex(ValueError, "Unsupported Gamdl database schema"):
+        with self.assertRaisesRegex(ValueError, "Unsupported SadSha Music Grab database schema"):
             db.index_file(self.media("song.m4a"), "songs", "123")
         self.assertEqual(self.path.read_bytes(), original)
         self.assertFalse(self.path.with_name(self.path.name + "-wal").exists())

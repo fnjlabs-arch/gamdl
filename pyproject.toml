@@ -1,7 +1,7 @@
 [project]
 name = "gamdl"
 version = "4.0.0"
-description = "A command-line app for downloading Apple Music songs, albums, playlists, music videos, and uploaded videos."
+description = "SadSha Music Grab — a command-line app for downloading Apple Music songs, albums, playlists, music videos, and uploaded videos."
 readme = "README.md"
 requires-python = ">=3.10"
 license = "MIT"
@@ -43,9 +43,9 @@ classifiers = [
 gamdl = "gamdl.cli.main:main"
 
 [project.urls]
-Homepage = "https://github.com/glomatico/gamdl"
-Repository = "https://github.com/glomatico/gamdl"
-Issues = "https://github.com/glomatico/gamdl/issues"
+Homepage = "https://github.com/fnjlabs-arch/gamdl"
+Repository = "https://github.com/fnjlabs-arch/gamdl"
+Issues = "https://github.com/fnjlabs-arch/gamdl/issues"
 
 [project.optional-dependencies]
 widevine = [

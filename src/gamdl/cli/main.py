@@ -1,4 +1,4 @@
-"""Gamdl command group; YAML is loaded before subcommand option parsing."""
+"""SadSha Music Grab command group; YAML is loaded before subcommand option parsing."""
 
 from pathlib import Path
 from dataclasses import asdict
@@ -15,7 +15,7 @@ from .errors import CliCommand
 
 
 @click.group(cls=CliCommand, context_settings={"auto_envvar_prefix": "GAMDL"})
-@click.version_option(__version__, "--version", "-v", prog_name="Gamdl")
+@click.version_option(__version__, "--version", "-v", prog_name="SadSha Music Grab")
 @click.option(
     "--config",
     "config_file",
@@ -26,7 +26,7 @@ from .errors import CliCommand
 @click.option("--no-config", is_flag=True, help="Ignore YAML configuration")
 @click.pass_context
 def main(ctx: click.Context, config_file: Path | None, no_config: bool) -> None:
-    """Gamdl 4.0 — download Apple Music with configurable codecs and progress."""
+    """SadSha Music Grab 4.0 — download Apple Music with configurable codecs and progress."""
     path = (config_file or default_config_path()).expanduser()
     ctx.obj = {
         "config_path": path,
@@ -42,7 +42,7 @@ def main(ctx: click.Context, config_file: Path | None, no_config: bool) -> None:
             path.parent.mkdir(parents=True, exist_ok=True)
             with path.open("x", encoding="utf-8") as stream:
                 stream.write(
-                    "# Gamdl 4.0 configuration; CLI flags override these values.\n\n"
+                    "# SadSha Music Grab 4.0 configuration; CLI flags override these values.\n\n"
                     + yaml.safe_dump(
                         asdict(AppConfig()), sort_keys=False, allow_unicode=True
                     )

@@ -12,7 +12,7 @@ from .models import AppConfig
 
 @click.group(name="config")
 def config_group() -> None:
-    """Initialize, inspect or validate Gamdl YAML settings."""
+    """Initialize, inspect or validate SadSha Music Grab YAML settings."""
 
 
 @config_group.command("path")
@@ -30,7 +30,7 @@ def initialize(ctx: click.Context, force: bool) -> None:
     path: Path = ctx.find_root().obj["config_path"]
     path.parent.mkdir(parents=True, exist_ok=True)
     template = (
-        "# Gamdl 4.0 configuration; CLI flags override these values.\n"
+        "# SadSha Music Grab 4.0 configuration; CLI flags override these values.\n"
         "# Configuration schema changes are normalized automatically.\n"
         "\n" + yaml.safe_dump(asdict(AppConfig()), sort_keys=False, allow_unicode=True)
     )

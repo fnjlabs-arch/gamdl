@@ -206,7 +206,7 @@ class MediaDatabase:
         ).fetchone()
         if version != SCHEMA_VERSION or not exists:
             raise ValueError(
-                "Unsupported Gamdl database schema. This release requires a fresh "
+                "Unsupported SadSha Music Grab database schema. This release requires a fresh "
                 "database; move the old SQLite file aside or change database.path. "
                 "The existing database has not been modified."
             )

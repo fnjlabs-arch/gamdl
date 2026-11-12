@@ -1,4 +1,4 @@
-"""Python-facing wrapper around the Gamdl Rust MP4 tagger."""
+"""Python-facing wrapper around the SadSha Music Grab Rust MP4 tagger."""
 
 from __future__ import annotations
 
